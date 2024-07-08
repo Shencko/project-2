@@ -3,16 +3,20 @@ kind: Application
 metadata:
   name: prod-app
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
-  project: default
-  source:
-    repoURL: "https://github.com/Shencko/project-2"
-    targetRevision: prod
-    path: prod
   destination:
-    server: "https://kubernetes.default.svc"
-    namespace: prod
+    namespace: dev
+    server: https://kubernetes.default.svc
+  project: project-two
+  source:
+    path: sample
+    repoURL: https://github.com/Shencko/project-2.git
+    targetRevision: HEAD
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
