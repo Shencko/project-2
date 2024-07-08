@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: "https://github.com/Shencko/project-2/my-k8s-configs"
+    repoURL: "https://github.com/Shencko/project-2"
     targetRevision: dev
     path: dev
   destination:
